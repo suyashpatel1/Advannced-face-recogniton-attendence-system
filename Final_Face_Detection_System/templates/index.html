@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Attendance System</title>
+    <link rel="stylesheet" href="../static/style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="title">Face-Recognition Automated Attendance System</div>
+        <div class="subtitle">Welcome to the Automated Attendance System<br>Let's get Started</div>
+
+        <!-- Face Scanner Section -->
+        <div class="scanner-section">
+            <div class="scanner-title">Face Scanner</div>
+            <div class="face-placeholder">
+                <img src="{{ url_for('video_feed') }}" class = "webcam"/>
+                <!-- <div class="imag">
+                    <img src="{{ url_for('static', filename='images/face_scan.jpeg') }}" />
+                </div> -->
+                
+
+                <!-- style="width: 100%; border-radius: 50%;" -->
+                <!-- style="width: 100%; max-height: 500px;" -->
+            </div>
+            
+            <div class="scanner-buttons">
+                <form method="POST" action="/start_scan">
+                    <button class="scan-btn" type="submit">Start Scan</button>
+                </form>
+                <form method="POST" action="/stop_scan">
+                    <button class="scan-btn" type="submit">Stop Scan</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Attendance Details Section -->
+        <div class="attendance-details">
+            <div class="detail-item">
+                <h4>Name</h4>
+                <p>{{ student_details.name }}</p>
+            </div>
+            <div class="detail-item">
+                <h4>Enrollment Number / Branch</h4>
+                <p>{{ student_details.enrollment }}</p>
+            </div>
+            <div class="detail-item">
+                <h4>Time / Period / Date</h4>
+                <p>{{ student_details.datetime }}</p>
+            </div>
+            <div class="detail-item">
+                <h4>Faculty Name</h4>
+                <p>{{ student_details.faculty }}</p>
+            </div>
+            <div class="detail-item">
+                <h4>Subject</h4>
+                <p>{{ student_details.subject }}</p>
+            </div>
+            <div class="detail-item">
+                <h4>Attendance Status</h4>
+                <p>{{ student_details.status }}</p>
+            </div>
+            <div class="detail-item">
+                <h4>Current Attendance Percentage</h4>
+                <p>{{ student_details.percentage }}</p>
+            </div>
+            <div class="detail-item">
+                <h4>Total Classes / Attended / Missed</h4>
+                <p>{{ student_details.total_classes }} / {{ student_details.attended_classes }} / {{ student_details.missed_classes }}</p>
+            </div>
+        </div>
+
+        <div class="footer">© 2024 Automated Attendance System. All Rights Reserved.</div>
+    </div>
+</body>
+</html>
